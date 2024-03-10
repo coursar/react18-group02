@@ -1,0 +1,17 @@
+services:
+  dev:
+    image: node:lts-alpine3.19
+    volumes:
+      - .:/opt/app
+    ports:
+      - '5173:5173'
+      - '4173:4173'
+    working_dir: /opt/app
+    command:
+      - sh
+      - -c
+      - |
+        echo "installing dependencies"
+        npm i
+        echo "run application"
+        npm run dev -- --host
