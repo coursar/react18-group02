@@ -8,7 +8,7 @@ const BasicRef02FormWithoutRef = () => {
         inputRef.current.focus()
         // ev.currentTarget.elements.name.focus()
         // bad:
-        //  - document.querySelector(...) -> quick & dirty hack
+        //  - document.querySelector(...) & getElementById(...) -> quick & dirty hack
         //  - window.nameInput
     }
 
