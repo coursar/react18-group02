@@ -42,3 +42,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   // </React.StrictMode>,
 )
+
+// Upload file:
+//  1. input type="file" - not stylizable
+//  2. DnD - Drag and Drop
+//  3. Web API*

@@ -1,14 +1,11 @@
 import { useRef, useState } from "react"
 
-const BasicRef08Debug = () => {
-    debugger
-    const [state, setState] = useState(0)
+const BasicRef01Debug = () => {
     const ref = useRef(100) // {current: 100}
 
     const handleClick = () => {
         ref.current++
         console.log(ref)
-        setState(prevState => prevState + 1)
     }
 
     return (
@@ -18,4 +15,4 @@ const BasicRef08Debug = () => {
     )
 }
 
-export default BasicRef08Debug
+export default BasicRef01Debug
