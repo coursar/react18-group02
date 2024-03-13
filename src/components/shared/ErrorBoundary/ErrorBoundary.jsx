@@ -14,7 +14,7 @@ export class ErrorBoundary extends Component {
     }
 
     componentDidCatch(error, info) {
-        debugger
+        console.error(error)
     }
 
     render() {
