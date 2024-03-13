@@ -7,14 +7,14 @@ import * as bootstrap from 'bootstrap'
 import { useRef } from "react"
 
 /* markup
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="..." class="rounded me-2" alt="...">
-    <strong class="me-auto">Bootstrap</strong>
+<div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div className="toast-header">
+    <img src="..." className="rounded me-2" alt="...">
+    <strong className="me-auto">Bootstrap</strong>
     <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
-  <div class="toast-body">
+  <div className="toast-body">
     Hello, world! This is a toast message.
   </div>
 </div>
@@ -27,15 +27,33 @@ myToast.show()
 */
 
 const BasicRef14ExternalBootstrap = () => {
+    const toastElRef = useRef(null)
+    const toastRef = useRef(null)
 
     const handleShow = () => {
-        // TODO: write code
+        debugger
+        // domEl.customProperty = toast
+        // storage (domEl & toast)
+        if (toastRef.current === null) { // бессмысленно
+            toastRef.current = bootstrap.Toast.getOrCreateInstance(toastElRef.current) 
+        }
+        toast.show()
     }
 
     return (
         <>
-            {/* markup */}
-            <button className='btn btn-primary' onClick={handleShow}>Show toast</button>
+            <div ref={toastElRef} className="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div className="toast-header">
+                    <img src="..." className="rounded me-2" alt="..."></img>
+                    <strong className="me-auto">Bootstrap</strong>
+                    <small>11 mins ago</small>
+                    <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div className="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+            <button classNameName='btn btn-primary' onClick={handleShow}>Show toast</button>
         </>
     )
 }
