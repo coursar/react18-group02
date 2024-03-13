@@ -1,12 +1,12 @@
 import './App.css'
 import { ErrorBoundary, ErrorOnRender } from './components/shared/ErrorBoundary' // from './components/shared/ErrorBoundary/index.js(ts)'
-import BasicRef10UseImperativeHandle from './showcase/functional/02ref/BasicRef10UseImperativeHandle'
+import BasicRef12Audio from './showcase/functional/02ref/BasicRef12Audio'
 
 function App() {
   return (
     <>
       <ErrorBoundary fallback={<div>main ooops!</div>}>
-        <BasicRef10UseImperativeHandle></BasicRef10UseImperativeHandle>
+        <BasicRef12Audio></BasicRef12Audio>
       </ErrorBoundary>
     </>
   )
