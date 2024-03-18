@@ -37,7 +37,7 @@ window.addEventListener('error', ev => {
 
 // render -> pure function/method -> sin(in) -> out
 // Dev mode differs from Prod
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root'), { identifierPrefix: 'app-' }).render(
   // <React.StrictMode>
     <App />
   // </React.StrictMode>,
