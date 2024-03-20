@@ -14,7 +14,7 @@ const work = (duration) => {
 // 2. Handler
 // 3. useEffect
 // 4. useLayoutEffect
-const BasicEffect01Showcase = () => {
+const BasicEffect02Showcase = () => {
     const [height, setHeight] = useState(0)
 
     useLayoutEffect(() => {
@@ -39,4 +39,4 @@ const BasicEffect01Showcase = () => {
     )
 }
 
-export default BasicEffect01Showcase
+export default BasicEffect02Showcase

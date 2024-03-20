@@ -70,3 +70,22 @@ ReactDOM.createRoot(document.getElementById('root'), { identifierPrefix: 'app-' 
 // setTimeout(() => {
 //   window.URL.revokeObjectURL(url)
 // }, 60 * 1000)
+
+
+
+// -- Dedicated Worker --
+// plain js:
+// const worker = new Worker('/dedicated-worker.js', {type: module})
+// worker.postMessage(data) // event type=message, data=data
+// addEventListener('message', ev => {...}) 
+
+// const worker = new Worker(new URL('./dedicated-worker.js', import.meta.url), {type: 'module'})
+
+// worker.addEventListener('message', (ev) => {
+//   console.log(ev)
+//   // worker.terminate()
+// })
+// // structured clone
+// worker.postMessage(data)
+
+// // worker.terminate()
