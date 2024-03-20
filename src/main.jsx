@@ -89,3 +89,40 @@ ReactDOM.createRoot(document.getElementById('root'), { identifierPrefix: 'app-' 
 // worker.postMessage(data)
 
 // // worker.terminate()
+
+// const worker = new SharedWorker(new URL('./shared-worker.js', import.meta.url), {
+//   type: 'module',
+//   name: 'shared',
+// })
+
+// // port
+// // worker.port.start()
+// // worker.port.onmessage = (ev) => {
+// // }
+
+// worker.port.start()
+// worker.port.addEventListener('message', (ev) => {
+//   console.log(ev)
+// })
+
+// worker.port.postMessage('request')
+// console.log('message send')
+
+// window.addEventListener('unload', () => {
+//   worker.port.postMessage('disconnect')
+// })
+
+// try {
+//   const registration = await navigator.serviceWorker.register(new URL('../service-worker.js', import.meta.url), {
+//     scope: '/'
+//   })
+//   console.log(registration)
+// } catch(e) {
+//   console.error(e)
+// }
+
+// setTimeout(async () => {
+//   const response = await fetch('/api/data.json')
+//   const data = await response.json()
+//   console.log(data)
+// }, 5000)
