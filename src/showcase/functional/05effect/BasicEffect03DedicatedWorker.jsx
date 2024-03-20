@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 
 const work = (duration) => {
     // sync code (no promise, async, no setTimeout)
@@ -15,30 +15,33 @@ const work = (duration) => {
 // 3. useEffect -> worker
 const BasicEffect03DedicatedWorker = () => {
     const [state, setState] = useState(null)
+    const workerRef = useRef(null)
+    if (workerRef.current === null) {
+        workerRef.current = new Worker(new URL('../../../dedicated-worker.js', import.meta.url), {type: 'module'})
+    }
 
     useEffect(() => {
-        const worker = new Worker(new URL('../../../dedicated-worker.js', import.meta.url), {type: 'module'})
-
-        worker.addEventListener('message', (ev) => {
+        workerRef.current.addEventListener('message', (ev) => {
             console.log(ev)
             setState(ev.data)
             // worker.terminate()
         })
-        worker.postMessage('calculateDate')
+        workerRef.current.postMessage('calculateDate')
 
         return () => { // cleaning function
-            worker.terminate()
+            workerRef.current.terminate()
         }
-    }, [])
+    }, [workerRef])
 
     const handleClick = () => {
-        // TODO: send task to worker
+        workerRef.current.postMessage('calculateDate')
+        setState(null)
     }
 
     return (
         <>
             <div>{state === null ? '...' : state.toUTCString()}</div>
-            {/* <button onClick={handleClick}>{state} Click Me</button> */}
+            <button onClick={handleClick}>Click Me</button>
         </>
     )
 }
