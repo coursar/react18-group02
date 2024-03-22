@@ -24,16 +24,23 @@ const BasicMemo03MemoConditional = () => {
         setState(prev => prev + 1)
     }
 
+    const styles = {
+        visibility: state % 2 === 0 ? 'visible' : 'hidden'
+    }
+
     return (
         <>
-            {state % 2 === 0 && <Child time={1}></Child>}
+            <div style={styles}>
+                <Child time={1}></Child>
+            </div>
             <button onClick={handleClick}>{state} Click Me</button>
         </>
     )
 }
 
+// hook - inside: instance component <-> memoized state
 const Child = (props) => {
-    const result = useMemo(() => work(props.time * 1000), []) // props based
+    const result = useMemo(() => work(props.time * 1000), [props.time]) // props based
     return (
         <>
             <span>result: {result}</span>

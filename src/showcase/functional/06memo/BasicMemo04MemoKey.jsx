@@ -16,7 +16,7 @@ const work = (duration) => {
 // 2. Handler
 // 3. useEffect
 // 4. useLayoutEffect
-const BasicMemo02Memo = () => {
+const BasicMemo04MemoKey = () => {
     const [state, setState] = useState(0)
     // [] -> filter, reduce, map
 
@@ -26,12 +26,13 @@ const BasicMemo02Memo = () => {
 
     return (
         <>
-            <Child time={1}></Child>
+            <Child key={state} time={1}></Child>
             <button onClick={handleClick}>{state} Click Me</button>
         </>
     )
 }
 
+// hook - inside: instance component <-> memoized state
 const Child = (props) => {
     const result = useMemo(() => work(props.time * 1000), [props.time]) // props based
     return (
@@ -41,4 +42,4 @@ const Child = (props) => {
     )
 }
 
-export default BasicMemo02Memo
+export default BasicMemo04MemoKey

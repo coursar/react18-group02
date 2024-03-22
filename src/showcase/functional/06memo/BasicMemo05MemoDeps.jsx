@@ -16,7 +16,7 @@ const work = (duration) => {
 // 2. Handler
 // 3. useEffect
 // 4. useLayoutEffect
-const BasicMemo02Memo = () => {
+const BasicMemo05MemoDeps = () => {
     const [state, setState] = useState(0)
     // [] -> filter, reduce, map
 
@@ -26,7 +26,7 @@ const BasicMemo02Memo = () => {
 
     return (
         <>
-            <Child time={1}></Child>
+            <Child time={state}></Child>
             <button onClick={handleClick}>{state} Click Me</button>
         </>
     )
@@ -41,4 +41,4 @@ const Child = (props) => {
     )
 }
 
-export default BasicMemo02Memo
+export default BasicMemo05MemoDeps
