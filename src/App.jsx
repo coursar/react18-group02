@@ -1,12 +1,12 @@
 import './App.css'
 import { ErrorBoundary, ErrorOnRender } from './components/shared/ErrorBoundary' // from './components/shared/ErrorBoundary/index.js(ts)'
-import BasicRedux01Debug from './showcase/functional/09redux/BasicRedux01Debug'
+import BasicRedux10Auth from './showcase/functional/09redux/BasicRedux10Auth'
 
 function App() {
   return (
     <>
       <ErrorBoundary fallback={<div>main ooops!</div>}>
-        <BasicRedux01Debug></BasicRedux01Debug>
+        <BasicRedux10Auth></BasicRedux10Auth>
       </ErrorBoundary>
     </>
   )

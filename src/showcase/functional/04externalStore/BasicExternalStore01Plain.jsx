@@ -21,6 +21,7 @@ const getSnapshot = () => {
     return store.state // Object.is
 }
 
+// dispatch
 const update = () => {
     store.state = {now: new Date()}
     store.listeners.forEach(listener => listener())   
