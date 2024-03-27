@@ -51,6 +51,7 @@ const counterSelector = (state) => state.counter
 const counterReducer = (state = initialCounterState, action) => {
     // action -> plain JS object, type: 'text'
     switch (action.type) {
+        // actionCreator.match(action)
         case INCREMENT_REQUEST: 
             // state.loading = true
             // state.error = null

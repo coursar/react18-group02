@@ -1,7 +1,14 @@
 import { useEffect } from "react"
 import { Provider, useSelector, useDispatch } from "react-redux"
 import { API_URL } from "../../../constants"
-import { combineSlices, configureStore, createSlice } from "@reduxjs/toolkit"
+import { combineSlices, configureStore, createAction, createSlice } from "@reduxjs/toolkit"
+
+const actionCreator = createAction('slice/action')
+// 1. type
+// 2. match -> action.creator.match(action) = true/false
+
+const action = actionCreator('anything') // {type: 'slice/action', payload: 'anything'}
+const matches = actionCreator.match(action)
 
 // createSlice
 // configureStore
@@ -14,7 +21,7 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: initialAuthState,
     reducers: {
-        login: (state) => {
+        login: (state) => { // dispatch(login(anything)) => {payload: anything}
             state.authenticated = true
         },
         logout: (state) => {
@@ -92,12 +99,18 @@ const appReducer = combineSlices(
 )
 
 const rootReducer = (state, action) => {
-    switch(action.type) {
-        case 'auth/logout':
-            return appReducer(undefined, action)
-        default:
-            return appReducer(state, action)
+    if (logout.match(action)) {
+        return appReducer(undefined, action)
     }
+
+    return appReducer(state, action)
+
+    // switch(action.type) {
+    //     case logout.type: // logout -> actionCreator -> createAction -> createSlice
+    //         return appReducer(undefined, action)
+    //     default:
+    //         return appReducer(state, action)
+    // }
 }
 
 const store = configureStore({
@@ -105,7 +118,7 @@ const store = configureStore({
 })
 
 // in separate file
-const BasicRedux10Auth = () => {
+const BasicRedux11ToolkitAction = () => {
     return (
         <>
             <Provider store={store}>
@@ -175,4 +188,4 @@ const Navbar = () => {
     )
 }
 
-export default BasicRedux10Auth
+export default BasicRedux11ToolkitAction
